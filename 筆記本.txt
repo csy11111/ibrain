@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBrain 資料</title>
+    <link rel="stylesheet" href="css/ibrain.css">
+</head>
+<body>
+    <h1>高點網院</h1>
+
+    <!-- 新增表格顯示每個 class 的時間總計 -->
+    <h2>課程時間總計</h2>
+    <table id="summary-table">
+        <thead>
+            <tr>
+                <th>課程名稱</th>
+                <th>總時長</th>
+            </tr>
+        </thead>
+        <tbody id="summary-table-body">
+            <!-- 總計資料將在這裡填充 -->
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>課程名稱</th>
+                <th>章節</th>
+            </tr>
+        </thead>
+        <tbody id="data-table-body">
+            <!-- 資料將在這裡填充 -->
+        </tbody>
+    </table>
+    <script src="js/ibrain.js"></script>
+</body>
+</html>
+
+
+// 等待 DOM 內容加載完畢
+document.addEventListener('DOMContentLoaded', () => {
+    // 獲取 IBrain 資料
+    fetch('/api/ibrain/unfinished')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('網路錯誤');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const dataTableBody = document.getElementById('data-table-body');
+            const summaryTableBody = document.getElementById('summary-table-body');
+
+            // 清空表格
+            dataTableBody.innerHTML = '';
+            summaryTableBody.innerHTML = '';
+
+            // 用來計算每個 class 的總時間
+            const classTimeSummary = {};
+
+            // 填充資料表
+            data.forEach(row => {
+                // 添加到資料表
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.class}</td>
+                    <td>${row.chapter}</td>
+                `;
+                dataTableBody.appendChild(tr);
+
+                // 計算每個 class 的時間總計
+                if (!classTimeSummary[row.class]) {
+                    classTimeSummary[row.class] = 0; // 初始化
+                }
+                classTimeSummary[row.class] += row.time; // 累加時間
+            });
+
+            // 填充時間總計表
+            let totalDuration = 0;
+            for (const className in classTimeSummary) {
+                const totalTime = classTimeSummary[className];
+                totalDuration += totalTime;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${className}</td>
+                    <td>${totalTime}</td>
+                `;
+                summaryTableBody.appendChild(tr);
+            }
+
+            // 添加總時長
+            const totalRow = document.createElement('tr');
+            totalRow.innerHTML = `
+                <td><strong>總時長</strong></td>
+                <td><strong>${totalDuration}</strong></td>
+            `;
+            summaryTableBody.appendChild(totalRow);
+        })
+        .catch(error => console.error('獲取資料失敗:', error));
+});
+
+
+
+在表格最右邊加上一個欄位 和一個送出按鈕
+將欄位的資料寫入ibrain的finishdate 同時將finish改為1

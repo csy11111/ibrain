@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上傳 IBrain 資料</title>
+    <link rel="stylesheet" href="css/upload.css">
+</head>
+<body>
+    <h1>上傳 IBrain 資料</h1>
+    <form id="upload-form">
+        <label for="class">課程名稱:</label>
+        <input type="text" id="class" name="class" required>
+
+        <label for="chapter">章節:</label>
+        <input type="text" id="chapter" name="chapter" required>
+
+        <button type="submit">新增</button>
+    </form>
+
+    
+
+    <h2>IBrain 資料</h2>
+    <table id="ibrain-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>課程名稱</th>
+                <th>章節</th>
+                <th>完成狀態</th>
+                <th>完成日期</th>
+                <th>花費時間</th>
+            </tr>
+        </thead>
+        <tbody id="ibrain-table-body">
+            <!-- IBrain 資料將在這裡填充 -->
+        </tbody>
+    </table>
+    <button id="complete-button" style="display: none;">完成編輯</button>
+
+    <script src="js/upload.js"></script>
+</body>
+</html>

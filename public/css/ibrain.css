@@ -1,0 +1,309 @@
+/* 重置樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 基礎樣式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* 主標題樣式 */
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin: 30px 0;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h2 {
+    color: #ffffff;
+    margin: 25px 0;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+/* 倒數計時器樣式 */
+#countdown {
+    text-align: center;
+    font-size: 3rem;
+    color: #ffcc00;
+    margin: 40px 0;
+    padding: 30px;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* 表格樣式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+tr:hover {
+    background-color: #383838;
+    transition: background-color 0.3s ease;
+}
+
+/* 輸入框樣式 */
+input[type="date"] {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: #555;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* 按鈕樣式 */
+.submit-button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #555;
+    transform: translateY(-1px);
+}
+
+.submit-button:active {
+    transform: translateY(1px);
+}
+
+/* 錯誤信息樣式 */
+.error {
+    color: #ff4444;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(255, 68, 68, 0.1);
+    border-radius: 4px;
+    border-left: 4px solid #ff4444;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    #countdown {
+        font-size: 2rem;
+        padding: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+}
+/* 前面的基礎樣式保持不變 */
+
+/* 表格欄位寬度調整 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    table-layout: fixed; /* 確保列寬固定 */
+}
+
+/* 設定各欄位寬度比例 */
+table th:nth-child(1), /* 課程名稱 */
+table td:nth-child(1) {
+    width: 40%;
+    font-size: 1.2rem;
+}
+
+table th:nth-child(2), /* 章節 */
+table td:nth-child(2) {
+    width: 35%;
+    font-size: 1.2rem;
+}
+
+table th:nth-child(3), /* 完成日期 */
+table td:nth-child(3) {
+    width: 15%;
+    font-size: 0.9rem;
+}
+
+table th:nth-child(4), /* 操作 */
+table td:nth-child(4) {
+    width: 10%;
+    font-size: 0.9rem;
+}
+
+/* 表格內容樣式 */
+th, td {
+    border: 1px solid #333;
+    padding: 12px 15px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #333;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 日期選擇器樣式 */
+input[type="date"] {
+    background-color: #333;
+    color: #ffffff;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 6px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    
+    /* 禁用手動輸入 */
+    pointer-events: none;
+}
+
+/* 只允許點擊日曆圖標 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    pointer-events: auto;
+    background-color: #ffcc00;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 3px;
+    filter: invert(1);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* 提交按鈕樣式調整 */
+.submit-button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #555;
+    transform: translateY(-1px);
+}
+
+.submit-button:active {
+    transform: translateY(1px);
+}
+
+/* 針對較長文字的處理 */
+td:nth-child(1), 
+td:nth-child(2) {
+    font-weight: 500;
+}
+
+/* 確保在小螢幕上的響應式設計 */
+@media (max-width: 768px) {
+    table th:nth-child(1),
+    table td:nth-child(1) {
+        font-size: 1rem;
+    }
+    
+    table th:nth-child(2),
+    table td:nth-child(2) {
+        font-size: 1rem;
+    }
+    
+    table th:nth-child(3),
+    table td:nth-child(3),
+    table th:nth-child(4),
+    table td:nth-child(4) {
+        font-size: 0.8rem;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+    }
+}
+
+/* 移除日期輸入框的編輯功能 */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input[type="date"]::-webkit-datetime-edit {
+    pointer-events: none;
+}
+
+/* Firefox 特定樣式 */
+@-moz-document url-prefix() {
+    input[type="date"] {
+        position: relative;
+        padding-right: 25px;
+    }
+    
+    input[type="date"]::-moz-calendar-picker-indicator {
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 4px;
+    }
+}

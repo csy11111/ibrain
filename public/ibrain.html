@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBrain 資料</title>
+    <link rel="stylesheet" href="css/ibrain.css">
+</head>
+<body>
+    <h1>高點網院</h1>
+
+    <!-- 倒數計時器 -->
+    <div id="countdown"></div>
+
+    <!-- 新增表格顯示每個 class 的時間總計 -->
+    <h2>課程時間總計</h2>
+    <table id="summary-table">
+        <thead>
+            <tr>
+                <th>課程名稱</th>
+                <th>總時長</th>
+            </tr>
+        </thead>
+        <tbody id="summary-table-body">
+            <!-- 總計資料將在這裡填充 -->
+        </tbody>
+    </table>
+    
+    <h2>未完成課程</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>課程名稱</th>
+                <th>章節</th>
+                <th>完成日期</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="data-table-body">
+            <!-- 資料將在這裡填充 -->
+        </tbody>
+    </table>
+    <script src="js/ibrain.js"></script>
+</body>
+</html>
