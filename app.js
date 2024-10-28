@@ -21,7 +21,7 @@ const db = new sqlite3.Database('cs1db.db', (err) => {
 
 // 設置根路由
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'ibrain.html'));
 });
 
 // 測試 API 路由
