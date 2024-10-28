@@ -110,7 +110,12 @@ app.use((req, res) => {
     res.status(404).send('Sorry, that route does not exist!');
 });
 
-// 在伺服器上啟動 API
-app.listen(port, () => {
-    console.log(`伺服器正在運行於 http://localhost:${port}`);
+// // 在伺服器上啟動 API
+// app.listen(port, () => {
+//     console.log(`伺服器正在運行於 http://localhost:${port}`);
+// });
+
+const PORT = process.env.PORT || 3000; // 使用環境變數 PORT，若未設定則使用 3000
+app.listen(PORT, () => {
+    console.log(`伺服器正在運行於 http://localhost:${PORT}`);
 });
